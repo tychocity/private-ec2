@@ -300,13 +300,13 @@ resource "aws_instance" "ec2_private" {
   ami                         = var.ami
   associate_public_ip_address = false
   instance_type               = "t2.micro"
-  key_name                    = var.key_name
+  key_name                    = var.keyname
   security_groups = ["${aws_security_group.webserver_sg.id}"]
   subnet_id                   = ["${aws_subnet.prv_sub1.id}"]
   #vpc_security_group_ids      = [var.sg_priv_id]
 
   tags = {
-    "Name" = "${var.namespace}-EC2-PRIVATE"
+    "Name" = "instance-EC2-PRIVATE"
   }
   }
 
