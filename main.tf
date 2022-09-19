@@ -308,6 +308,7 @@ resource "aws_instance" "ec2_private" {
   tags = {
     "Name" = "${var.namespace}-EC2-PRIVATE"
   }
+  }
 
 ## Create Target group
 
