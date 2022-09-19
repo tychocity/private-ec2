@@ -304,13 +304,14 @@ resource "aws_instance" "ec2_private" {
   security_groups = ["${aws_security_group.webserver_sg.id}"]
   subnet_id                   = aws_subnet.prv_sub1.id
   #vpc_security_group_ids      = [var.sg_priv_id]
+  user_data = filebase64("${path.module}/init_webserver.sh")
 
   tags = {
     "Name" = "instance-EC2-PRIVATE_1"
   }
   }
 
-user_data = filebase64("${path.module}/init_webserver.sh")
+
 
   ## Configure the EC2 instance in a private subnet 2
 resource "aws_instance" "ec2_private" {
@@ -321,13 +322,14 @@ resource "aws_instance" "ec2_private" {
   security_groups = ["${aws_security_group.webserver_sg.id}"]
   subnet_id                   = aws_subnet.prv_sub2.id
   #vpc_security_group_ids      = [var.sg_priv_id]
+  user_data = filebase64("${path.module}/init_webserver.sh")
 
   tags = {
     "Name" = "instance-EC2-PRIVATE_2"
   }
   }
 
-user_data = filebase64("${path.module}/init_webserver.sh")
+
 
 ## Create Target group
 
