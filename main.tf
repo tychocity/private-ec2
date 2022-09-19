@@ -302,7 +302,7 @@ resource "aws_instance" "ec2_private" {
   instance_type               = "t2.micro"
   key_name                    = var.keyname
   security_groups = ["${aws_security_group.webserver_sg.id}"]
-  subnet_id                   = prv_sub1
+  subnet_id                   = private_subnet1
   #vpc_security_group_ids      = [var.sg_priv_id]
 
   tags = {
