@@ -296,7 +296,7 @@ egress {
 #} 
 
 ## Configure the EC2 instance in a private subnet 1
-resource "aws_instance" "ec2_private" {
+resource "aws_instance" "ec2_private1" {
   ami                         = var.ami
   associate_public_ip_address = false
   instance_type               = "t2.micro"
@@ -314,7 +314,7 @@ resource "aws_instance" "ec2_private" {
 
 
   ## Configure the EC2 instance in a private subnet 2
-resource "aws_instance2" "ec2_private" {
+resource "aws_instance" "ec2_private2" {
   ami                         = var.ami
   associate_public_ip_address = false
   instance_type               = "t2.micro"
