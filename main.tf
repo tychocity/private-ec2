@@ -247,32 +247,32 @@ egress {
 
 #Create Launch config
 
-resource "aws_launch_configuration" "webserver-launch-config" {
-  name_prefix   = "webserver-launch-config"
-  image_id      =  var.ami
-  instance_type = "t2.micro"
-  key_name	= var.keyname
-  security_groups = ["${aws_security_group.webserver_sg.id}"]
-  
-  root_block_device {
-            volume_type = "gp2"
-            volume_size = 10
-            encrypted   = true
-        }
-
-    ebs_block_device {
-            device_name = "/dev/sdf"
-            volume_type = "gp2"
-            volume_size = 5
-            encrypted   = true
-        }
-       
-
-  lifecycle {
-    create_before_destroy = true
-  }
-  user_data = filebase64("${path.module}/init_webserver.sh")
-}
+#resource "aws_launch_configuration" "webserver-launch-config" {
+#  name_prefix   = "webserver-launch-config"
+#  image_id      =  var.ami
+#  instance_type = "t2.micro"
+#  key_name	= var.keyname
+#  security_groups = ["${aws_security_group.webserver_sg.id}"]
+#  
+#  root_block_device {
+#            volume_type = "gp2"
+#            volume_size = 10
+#            encrypted   = true
+#        }
+#
+#    ebs_block_device {
+#            device_name = "/dev/sdf"
+#            volume_type = "gp2"
+#            volume_size = 5
+#            encrypted   = true
+#        }
+#       
+#
+#  lifecycle {
+#    create_before_destroy = true
+#  }
+#  user_data = filebase64("${path.module}/init_webserver.sh")
+#}
 
 
 ## Create Auto Scaling Group
@@ -294,6 +294,22 @@ resource "aws_launch_configuration" "webserver-launch-config" {
 #    propagate_at_launch = true
 #    }
 #} 
+
+# Create ec2 instance
+#resource "aws_instance" "" {
+#  ami           = var.ami
+#  instance_type = var.instance_type
+#
+#  network_interface {
+#    network_interface_id = var.network_interface_id
+#    device_index         = 0
+#  }
+#
+#  credit_specification {
+#    cpu_credits = "unlimited"
+#  }
+#}
+
 ## Create Target group
 
 resource "aws_lb_target_group" "TG-tf" {
