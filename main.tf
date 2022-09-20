@@ -290,7 +290,7 @@ resource "aws_instance" "ec2_private2" {
 
 resource "aws_lb_target_group" "TG-tf" {
   name     = "Demo-TargetGroup-tf"
-  depends_on = ["aws_vpc.main"]
+  depends_on = [aws_vpc.main]
   port     = 80
   protocol = "HTTP"
   vpc_id   = "${aws_vpc.main.id}"
