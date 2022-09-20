@@ -352,14 +352,14 @@ resource "aws_lb_target_group" "TG-tf" {
 }
 
 # Attach instancia 1
-resource "aws.aws_lb_target_group_attachment" "app_attach1" {
+resource "aws_lb_target_group_attachment" "app_attach1" {
   target_group_arn      = aws_lb_target_group.TG-tf.arn
   target_id             = aws_instance.ec2_private1.id
   port                  = 80
 }
 
 # Attach instancia 1
-resource "aws.aws_lb_target_group_attachment" "app_attach2" {
+resource "aws_lb_target_group_attachment" "app_attach2" {
   target_group_arn      = aws_lb_target_group.TG-tf.arn
   target_id             = aws_instance.ec2_private2.id
   port                  = 80
